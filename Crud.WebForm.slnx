@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Crud.BusinessLayer/Crud.BusinessLayer.csproj" Id="cb8e3e09-1a07-4730-b80d-fa8ca338d5db" />
+  <Project Path="Crud.DataLayer/Crud.DataLayer.csproj" Id="31669a88-0a8a-4cd0-bb0e-531989a0e2cf" />
+  <Project Path="Crud.EntityLayer/Crud.EntityLayer.csproj" Id="5da4ca93-d6ce-432f-8984-573ba45ad592" />
+  <Project Path="Crud.WebForm/Crud.WebForm.csproj" Id="3e03c926-8e2f-4fd5-bc88-a1599b5a6065" />
+</Solution>

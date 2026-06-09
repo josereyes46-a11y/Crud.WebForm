@@ -1,0 +1,83 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	background: #f4f4f4;
+}
+
+.contenido {
+	padding: 40px;
+	text-align: center;
+}
+
+.card {
+	background-color: #41BDDC;
+	padding: 30px;
+	border-radius: 12px;
+	max-width: 600px;
+	margin: 0 auto;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cuerpo {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.input-group {
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
+	.input-group label {
+		display: block;
+		margin-bottom: 8px;
+		color: #555;
+		font-size: 14px;
+	}
+
+.acciones {
+	margin-top: 20px;
+	display: flex; 
+	justify-content: center;
+	gap: 15px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+	background: #8ED3E6;
+}
+
+.campo {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.boton {
+	width: 40%;
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+	background: #1A89FF;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+	.boton:hover {
+		background: #030099;
+	}
+
+th, td {
+	padding: 12px 15px;
+	border-bottom: 1px solid #ddd;
+}

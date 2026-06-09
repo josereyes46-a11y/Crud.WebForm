@@ -1,0 +1,89 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+
+.contenido {
+    padding: 40px;
+    text-align: center;
+}
+
+.card {
+    background-color: #41BDDC;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+    .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 14px;
+    }
+
+.campo {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.contenido-select {
+    display: inline-block;
+    margin-right: 15px;
+    position: absolute;
+}
+
+.boton {
+    width: 20%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background: #1A89FF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .boton:hover {
+        background: #030099;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background: #8ED3E6;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.botonback {
+    width: 20%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background: green;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
