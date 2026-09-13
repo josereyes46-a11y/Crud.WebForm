@@ -34,15 +34,15 @@
 
                 <br /><br /><br /><br />
 
-                <asp:ImageButton ID="btnAlta" runat="server" ImageUrl="~/vistas/Roles/pic_alta.png" AlternateText="Alta" Height="70px" Width="70px" OnClick="btnAlta_Click" />                
-                <asp:ImageButton ID="btnBaja" runat="server" ImageUrl="~/vistas/Roles/pic_modif.png" AlternateText="Baja" Height="70px" Width="70px" OnClick="btnBaja_Click" />                
-                <asp:ImageButton ID="btnConsulta" runat="server" ImageUrl="~/vistas/Roles/pic_baja.png" AlternateText="Consulta" Height="70px" Width="70px" OnClick="btnConsulta_Click" />                
-                <asp:ImageButton ID="btnModificar" runat="server" ImageUrl="~/vistas/Roles/pic_cons.png" AlternateText="Modificacion" Height="70px" Width="70px" OnClick="btnModificar_Click" />                
-                <asp:ImageButton ID="btnRegresar" runat="server" ImageUrl="~/vistas/Roles/pic_back.png" AlternateText="Regresar" Height="70px" Width="70px" OnClick="btnRegresar_Click" />      
-                <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje" />
-
-              
-
+                <asp:ImageButton ID="btnAlta" runat="server" ImageUrl="~/vistas/Roles/pic_alta.png" AlternateText="Alta" Height="70px" Width= "70px" OnClick="btnAlta_Click"/> 
+                <asp:ImageButton ID="btnBaja" runat="server" ImageUrl="~/vistas/Roles/pic_baja.png" AlternateText="Baja" Height="70px" Width="70px" OnClick="btnBaja_Click" />
+                <asp:ImageButton ID="btnConsulta" runat="server" ImageUrl="~/vistas/Roles/pic_cons.png" AlternateText="Consulta" Height="70px" Width="70px" OnClick="btnConsulta_Click" />
+                <asp:ImageButton ID="btnModificacion" runat="server" ImageUrl="~/vistas/Roles/pic_modif.png" AlternateText="Modificacion" Height="70px" Width="70px" OnClick="btnModificacion_Click" />
+                <asp:ImageButton ID="btnRegresar" runat="server" ImageUrl="~/vistas/Roles/pic_back.png" AlternateText="Regresar" Height= "70px" Width="70px" OnClick="btnRegresar_Click" />
+                
+                <asp:Label ID="lblFallo" runat="server" ForeColor="Red"/>
+                <asp:Label ID="lblExito" runat="server" ForeColor="Green" />
+          
                 <br /><br />
 
                 <asp:GridView ID="gvRoles" runat="server" AutoGenerateColumns="False" CssClass="tabla">

@@ -13,9 +13,9 @@ namespace Crud.BusinessLayer
     {
         private ProductoDL productoDL = new ProductoDL();
 
-        public bool validarNombre(string Nombre)
+        public bool validarNombre(string Nombre, int ClaveProducto = 0, bool esModificacion = false)
         {
-            if (Nombre == null || Nombre == "")
+            if (string.IsNullOrEmpty(Nombre))
             {
                 throw new Exception("El nombre no puede estar vacío");
             }
@@ -27,34 +27,35 @@ namespace Crud.BusinessLayer
             {
                 throw new Exception("El nombre no puede contener números ni caracteres especiales");
             }
-            else if (productoDL.obtenerTodosProductos().Any(p => p.Nombre == Nombre))
+            else if (!esModificacion && productoDL.obtenerTodosProductos().Any(p => p.Nombre == Nombre))
             {
                 throw new Exception("El nombre del producto ya existe");
             }
-            else
+            else if (esModificacion && productoDL.obtenerTodosProductos().Any(p => p.Nombre == Nombre && p.ClaveProducto != ClaveProducto))
             {
-                return true;
+                throw new Exception("El nombre del producto ya pertenece a otro registro");
             }
+
+            return true;
         }
 
-        public bool validarCampos(string Nombre, int Cantidad, int ClaveProducto, string Categoria, string Descripcion)
+        public bool validarCampos(string Nombre, int Cantidad, int ClaveProducto, string Categoria, string Descripcion, bool esModificacion = false)
         {
-            if (validarNombre(Nombre) && validarCantidad(Cantidad) && validarClaveProducto(ClaveProducto))
+            if (validarNombre(Nombre, ClaveProducto, esModificacion) && validarCantidad(Cantidad) && validarClaveProducto(ClaveProducto))
             {
+                if (string.IsNullOrEmpty(Categoria))
+                {
+                    throw new Exception("La categoría no puede estar vacía");
+                }
+                if (string.IsNullOrEmpty(Descripcion))
+                {
+                    throw new Exception("La descripción no puede estar vacía");
+                }
+
                 return true;
             }
-            else if (Categoria == null || Categoria == "")
-            {
-                throw new Exception("La categoría no puede estar vacía");
-            }
-            else if (Descripcion == null || Descripcion == "")
-            {
-                throw new Exception("La descripción no puede estar vacía");
-            }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public bool validarClaveProducto(int ClaveProducto)
@@ -106,23 +107,28 @@ namespace Crud.BusinessLayer
             }
         }
 
-        public bool validarRegistroProducto(int ClaveProducto, string Nombre)
+        public bool validarRegistroProducto(int ClaveProducto, string Nombre, bool esModificacion)
 
         {
             var productos = productoDL.obtenerTodosProductos();
 
-            if (productos.Any(p => p.ClaveProducto == ClaveProducto))
+            if (!esModificacion)
             {
-                throw new Exception("La clave del producto ya existe");
-            }
-            else if (productos.Any(p => p.Nombre == Nombre))
-            {
-                throw new Exception("El nombre del producto ya existe");
+                // Validaciones para REGISTRAR UN NUEVO producto
+                if (productos.Any(p => p.ClaveProducto == ClaveProducto))
+                    throw new Exception("La clave del producto ya existe");
+
+                if (productos.Any(p => p.Nombre == Nombre))
+                    throw new Exception("El nombre del producto ya existe");
             }
             else
             {
-                return true;
+                // Validaciones para MODIFICAR un producto existente
+                if (productos.Any(p => p.Nombre == Nombre && p.ClaveProducto != ClaveProducto))
+                    throw new Exception("El nombre del producto ya pertenece a otro registro");
             }
+
+            return true;
         }
     }
 }

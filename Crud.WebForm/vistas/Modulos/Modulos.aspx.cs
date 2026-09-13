@@ -50,6 +50,11 @@ namespace Crud.WebForm
             Response.Redirect("~/vistas/CatalogoProductos/CatalogoProductos.aspx");
         }
 
+        protected void btnInventario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/vistas/GestionInventario/GestionInventario.aspx");
+        }
+
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session.Abandon();

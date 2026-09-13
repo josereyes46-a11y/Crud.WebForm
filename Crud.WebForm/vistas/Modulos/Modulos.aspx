@@ -9,7 +9,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <header class="banner">Menu Principal</header>
 
         <main class="contenido">
             <div class="card">
@@ -34,8 +33,8 @@
                 <!--<asp:Button ID="btnHistorial" runat="server" Text="Historial" CssClass="boton" />
                 <br /><br /-->
 
-                <asp:Button ID="btnInventario" runat="server" Text="Gestión de Inventario" CssClass="boton" />
-                <br /><br />
+                <asp:Button ID="btnInventario" runat="server" Text="Gestión de Inventario" CssClass="boton" OnClick="btnInventario_Click" />
+                <br /><br /-->
 
                 <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
                 <br /><br />

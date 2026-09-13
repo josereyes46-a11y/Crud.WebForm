@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f4f4;
+    background-color: white;
 }
 
 #titulo {
@@ -24,7 +24,7 @@ body {
 }
 
 .contenedor {
-    background-color: #00FFFF;
+    background-color: orange;
     padding: 40px;
     width: 350px;
     border-radius: 15px;
@@ -75,7 +75,7 @@ body {
     border-width: medium;
     padding: 12px;
     border-radius: 4px;
-    background: #1A89FF;
+    background: brown;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -83,6 +83,6 @@ body {
 }
 
 .login_btn:hover {
-    background: #030099;
+    background: black;
 }
 

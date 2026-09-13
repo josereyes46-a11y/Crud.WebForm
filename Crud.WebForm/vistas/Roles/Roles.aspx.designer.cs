@@ -87,13 +87,13 @@ namespace Crud.WebForm
         protected global::System.Web.UI.WebControls.ImageButton btnConsulta;
 
         /// <summary>
-        /// Control btnModificar.
+        /// Control btnModificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnModificar;
+        protected global::System.Web.UI.WebControls.ImageButton btnModificacion;
 
         /// <summary>
         /// Control btnRegresar.
@@ -105,13 +105,22 @@ namespace Crud.WebForm
         protected global::System.Web.UI.WebControls.ImageButton btnRegresar;
 
         /// <summary>
-        /// Control lblMensaje.
+        /// Control lblFallo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        protected global::System.Web.UI.WebControls.Label lblFallo;
+
+        /// <summary>
+        /// Control lblExito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExito;
 
         /// <summary>
         /// Control gvRoles.

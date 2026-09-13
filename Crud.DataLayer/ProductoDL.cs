@@ -83,14 +83,21 @@ namespace Crud.DataLayer
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 string query = "UPDATE producto SET nombre = @Nombre, categoria = @Categoria, descripcion = @Descripcion, cantidad = @Cantidad WHERE clave_producto = @ClaveProducto";
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ClaveProducto", ClaveProducto);
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
                 cmd.Parameters.AddWithValue("@Categoria", Categoria);
                 cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
                 cmd.Parameters.AddWithValue("@Cantidad", Cantidad);
+
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                int filasAfectadas = cmd.ExecuteNonQuery();
+
+                if (filasAfectadas == 0)
+                {
+                    throw new Exception("No se encontró ningún producto con esa clave o los datos son idénticos.");
+                }
             }
         }
         public List<Producto> obtenerTodosProductos()

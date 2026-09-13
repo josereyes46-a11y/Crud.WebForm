@@ -16,7 +16,7 @@ namespace Crud.BusinessLayer
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string query = "SELECT nombre, categoria FROM producto";
+                string query = "SELECT nombre, categoria, cantidad FROM producto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 conn.Open();
 
@@ -27,7 +27,8 @@ namespace Crud.BusinessLayer
                         inventario.Add(new Producto
                         {
                             Nombre = reader["nombre"].ToString(),
-                            Categoria = reader["categoria"].ToString()
+                            Categoria = reader["categoria"].ToString(),
+                            Cantidad = Convert.ToInt32(reader["cantidad"])
                         });
                     }
                 }
@@ -42,7 +43,7 @@ namespace Crud.BusinessLayer
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string query = "SELECT tipo_movimiento, fecha, clave_producto, cantidad FROM inventario WHERE tipo_movimiento = 'entrada'";
+                string query = "SELECT cantidad FROM producto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 conn.Open();
 
@@ -52,9 +53,6 @@ namespace Crud.BusinessLayer
                     {
                         entradas.Add(new Inventario
                         {
-                            TipoMovimiento = reader["tipo_movimiento"].ToString(),
-                            Fecha = Convert.ToDateTime(reader["fecha"]),
-                            ClaveProducto = Convert.ToInt32(reader["clave_producto"]),
                             Cantidad = Convert.ToInt32(reader["cantidad"])
                         });
                     }
@@ -70,7 +68,7 @@ namespace Crud.BusinessLayer
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string query = "SELECT tipo_movimiento, fecha, clave_producto, cantidad FROM inventario WHERE tipo_movimiento = 'salida'";
+                string query = "SELECT cantidad FROM producto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 conn.Open();
 
@@ -80,9 +78,6 @@ namespace Crud.BusinessLayer
                     {
                         salidas.Add(new Inventario
                         {
-                            TipoMovimiento = reader["tipo_movimiento"].ToString(),
-                            Fecha = Convert.ToDateTime(reader["fecha"]),
-                            ClaveProducto = Convert.ToInt32(reader["clave_producto"]),
                             Cantidad = Convert.ToInt32(reader["cantidad"])
                         });
                     }

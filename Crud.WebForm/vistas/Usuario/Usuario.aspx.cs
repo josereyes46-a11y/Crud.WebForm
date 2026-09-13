@@ -19,8 +19,16 @@ namespace Crud.WebForm
                 CargarUsuarios();
             }
         }
+
+        private void LimpiarMensajes()
+        {
+            lblFallo.Text = "";
+            lblExito.Text = "";
+        }
         protected void btnAlta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string id = txtId.Text;
             string nombre = txtNombre.Text;
             string apellidoP = txtApellidoP.Text;
@@ -31,7 +39,7 @@ namespace Crud.WebForm
             if (id == null || nombre == null || apellidoP == null || apellidoM == null || usuario == null || pass == null
                 || id == "" || apellidoP == "" || apellidoM == "" || usuario == "" || pass == "")
             {
-                lblMensaje.Text = "Debe llenar todos los campos para registrar un usuario";
+                lblFallo.Text = "Debe llenar todos los campos para registrar un usuario";
                 return;
             }
 
@@ -59,7 +67,7 @@ namespace Crud.WebForm
                 CargarUsuarios();
                 
 
-                lblMensaje.Text = "Usuario registrado correctamente";
+                lblExito.Text = "Usuario registrado correctamente";
             }
             catch (Exception ex)
             {
@@ -69,18 +77,20 @@ namespace Crud.WebForm
                 txtApellidoM.Text = "";
                 txtUsuario.Text = "";
                 txtPass.Text = "";
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
 
 
         }
         protected void btnBaja_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string id = txtId.Text;
 
             if (id == null || id == "")
             {
-                lblMensaje.Text = "Debe ingresar un ID para eliminar un usuario";
+                lblFallo.Text = "Debe ingresar un ID para eliminar un usuario";
                 return;
             }
             try
@@ -98,26 +108,28 @@ namespace Crud.WebForm
                     txtId.Text = "";
                     CargarUsuarios();
 
-                    lblMensaje.Text = "Usuario eliminado correctamente";
+                    lblExito.Text = "Usuario eliminado correctamente";
                 }
                 else
                 {
                     txtId.Text = "";
-                    lblMensaje.Text = "Operación cancelada por el usuario";
+                    lblFallo.Text = "Operación cancelada por el usuario";
                 }
 
             }
             catch (Exception)
             {
-                lblMensaje.Text = "No se encuentra el ID registrado";
+                lblFallo.Text = "No se encuentra el ID registrado";
             }
 
         }
         protected void btnConsulta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             if (txtId.Text == null || txtId.Text == "")
             {
-                lblMensaje.Text = "Debe ingresar un ID para consultar un usuario";
+                lblFallo.Text = "Debe ingresar un ID para consultar un usuario";
                 return;
             }
 
@@ -130,7 +142,7 @@ namespace Crud.WebForm
                 if (usuario != null)
                 {
                     
-                    lblMensaje.Text = "Consulta: " + Environment.NewLine
+                    lblExito.Text = "Consulta: " + Environment.NewLine
 
                                       + "Nombre: " + usuario.Nombre + " " + Environment.NewLine
                                       + "Apellido Paterno: " + usuario.ApellidoPaterno + " " + Environment.NewLine
@@ -139,19 +151,21 @@ namespace Crud.WebForm
                 }
                 else
                 {
-                    lblMensaje.Text = "No se encuentra el usuario registrado";
+                    lblFallo.Text = "No se encuentra el usuario registrado";
                 }
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "No se ha encontrado el ID" + ex; 
+                lblFallo.Text = "No se ha encontrado el ID" + ex; 
             }
         }
 
 
 
-        protected void btnModificar_Click(object sender, EventArgs e)
+        protected void btnModificacion_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string id = txtId.Text;
             string nombre = txtNombre.Text;
             string apellidoP = txtApellidoP.Text;
@@ -162,7 +176,7 @@ namespace Crud.WebForm
             if (id == null || nombre == null || apellidoP == null || apellidoM == null || usuario == null || pass == null
                || id == "" || nombre == "" || apellidoP == "" || apellidoM == "" || usuario == "" || pass == "")
             {
-                lblMensaje.Text = "Debe llenar todos los campos para modificar un usuario";
+                lblFallo.Text = "Debe llenar todos los campos para modificar un usuario";
                 return;
             }
 
@@ -184,11 +198,11 @@ namespace Crud.WebForm
 
                 CargarUsuarios();
 
-                lblMensaje.Text = "Usuario modificado correctamente";
+                lblExito.Text = "Usuario modificado correctamente";
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
         }
 

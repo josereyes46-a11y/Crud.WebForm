@@ -20,9 +20,15 @@ namespace Crud.WebForm
             }
         }
 
-
+        private void LimpiarMensajes()
+        {
+            lblFallo.Text = "";
+            lblExito.Text = "";
+        }
         protected void btnAlta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string claveProducto = txtClave.Text;
             string nombre = txtNombre.Text;
             string categoria = txtCategoria.Text;
@@ -32,7 +38,7 @@ namespace Crud.WebForm
             if (claveProducto == null || nombre == null || categoria == null || cantidad == null || descripcion == null
                 || claveProducto == "" || nombre == "" || categoria == "" || cantidad == "" || descripcion == "")
             {
-                lblMensaje.Text = "Debe llenar todos los campos para registrar un producto";
+                lblFallo.Text = "Debe llenar todos los campos para registrar un producto";
                 return;
             }
 
@@ -42,8 +48,7 @@ namespace Crud.WebForm
                 productoBL.validarNombre(nombre);
                 productoBL.validarClaveProducto(int.Parse(claveProducto));
                 productoBL.validarCantidad(int.Parse(cantidad));
-                productoBL.validarRegistroProducto(int.Parse(claveProducto), nombre);
-                productoBL.validarCampos(nombre, int.Parse(cantidad), int.Parse(claveProducto), categoria, descripcion);
+                productoBL.validarRegistroProducto(int.Parse(claveProducto), nombre, esModificacion: true); productoBL.validarCampos(nombre, int.Parse(cantidad), int.Parse(claveProducto), categoria, descripcion);
 
                 ProductoDL productoDL = new ProductoDL();
                 productoDL.altaProducto(int.Parse(claveProducto), nombre, categoria, descripcion, int.Parse(cantidad));
@@ -56,7 +61,7 @@ namespace Crud.WebForm
 
                 CargarProductos();
 
-                lblMensaje.Text = "Producto registrado correctamente";
+                lblExito.Text = "Producto registrado correctamente";
             }
             catch (Exception ex)
             {
@@ -66,7 +71,7 @@ namespace Crud.WebForm
                 txtCantidad.Text = "";
                 txtDescripcion.Text = "";
 
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
 
 
@@ -74,10 +79,12 @@ namespace Crud.WebForm
 
         protected void btnBaja_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string claveProducto = txtClave.Text;
             if (claveProducto == null || claveProducto == "")
             {
-                lblMensaje.Text = "Debe ingresar la clave del producto para eliminarlo";
+                lblFallo.Text = "Debe ingresar la clave del producto para eliminarlo";
                 return;
             }
             try
@@ -95,12 +102,12 @@ namespace Crud.WebForm
                     txtClave.Text = "";
                     CargarProductos();
 
-                    lblMensaje.Text = "Producto eliminado correctamente";
+                    lblExito.Text = "Producto eliminado correctamente";
                 }
                 else
                 {
                     txtClave.Text = "";
-                    lblMensaje.Text = "Operación cancelada por el usuario";
+                    lblExito.Text = "Operación cancelada por el usuario";
                 }
             }
             catch (Exception ex)
@@ -110,15 +117,17 @@ namespace Crud.WebForm
                 txtCategoria.Text = "";
                 txtCantidad.Text = "";
                 txtDescripcion.Text = "";
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
         }
 
         protected void btnConsulta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+        
             if (txtClave.Text == null || txtClave.Text == "")
             {
-                lblMensaje.Text = "Debe ingresar la clave del producto para consultarlo";
+                lblFallo.Text = "Debe ingresar la clave del producto para consultarlo";
                 return;
             }
 
@@ -130,7 +139,7 @@ namespace Crud.WebForm
                 if (producto != null)
                 {
 
-                    lblMensaje.Text = "Consulta: " + Environment.NewLine
+                    lblExito.Text = "Consulta: " + Environment.NewLine
 
                                       + "Nombre: " + producto.Nombre + " " + Environment.NewLine
                                       + "Categoría: " + producto.Categoria + " " + Environment.NewLine
@@ -139,18 +148,20 @@ namespace Crud.WebForm
                 }
                 else
                 {
-                    lblMensaje.Text = "No se encuentra el producto registrado";
+                    lblFallo.Text = "No se encuentra el producto registrado";
                 }
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
        }
-   
+
 
         protected void btnModificacion_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             string claveProducto = txtClave.Text;
             string nombre = txtNombre.Text;
             string categoria = txtCategoria.Text;
@@ -160,27 +171,26 @@ namespace Crud.WebForm
             if (claveProducto == null || nombre == null || categoria == null || cantidad == null || descripcion == null
                 || claveProducto == "" || nombre == "" || categoria == "" || cantidad == "" || descripcion == "")
             {
-                lblMensaje.Text = "Debe llenar todos los campos para modificar un producto";
+                lblFallo.Text = "Debe llenar todos los campos para modificar un producto";
                 return;
             }
 
             try
             {
                 ProductoBL productoBL = new ProductoBL();
-                productoBL.validarNombre(nombre);
-                productoBL.validarClaveProducto(int.Parse(claveProducto));
-                productoBL.validarCantidad(int.Parse(cantidad));
-                productoBL.validarCampos(nombre, int.Parse(cantidad), int.Parse(claveProducto), categoria, descripcion);
+                productoBL.validarCampos(nombre, int.Parse(cantidad), int.Parse(claveProducto), categoria, descripcion, esModificacion: true);
 
                 ProductoDL productoDL = new ProductoDL();
                 productoDL.modificacionProducto(int.Parse(claveProducto), nombre, categoria, descripcion, int.Parse(cantidad));
+
                 txtClave.Text = "";
                 txtNombre.Text = "";
                 txtCategoria.Text = "";
                 txtCantidad.Text = "";
                 txtDescripcion.Text = "";
+
                 CargarProductos();
-                lblMensaje.Text = "Producto modificado correctamente";
+                lblExito.Text = "Producto modificado correctamente";
             }
             catch (Exception ex)
             {
@@ -189,7 +199,7 @@ namespace Crud.WebForm
                 txtCategoria.Text = "";
                 txtCantidad.Text = "";
                 txtDescripcion.Text = "";
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
         }
 

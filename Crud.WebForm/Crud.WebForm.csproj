@@ -172,6 +172,8 @@
     <Content Include="Global.asax" />
     <Content Include="vistas\CatalogoProductos\CatalogoProductos.aspx" />
     <Content Include="vistas\CatalogoProductos\estilo6.css" />
+    <Content Include="vistas\GestionInventario\estilo7.css" />
+    <Content Include="vistas\GestionInventario\GestionInventario.aspx" />
     <Content Include="vistas\Login\estilo.css" />
     <Content Include="vistas\Login\user.png" />
     <Content Include="vistas\Modulos\closesion.png" />
@@ -238,22 +240,22 @@
     <Content Include="vistas\Productos\estilo5.css" />
     <Content Include="vistas\Productos\pic_alta.png" />
     <Content Include="vistas\Productos\pic_back.png" />
-    <Content Include="vistas\Productos\pic_baja.png" />
     <Content Include="vistas\Productos\pic_cons.png" />
     <Content Include="vistas\Productos\pic_modif.png" />
+    <Content Include="vistas\Productos\pic_baja.png" />
     <Content Include="vistas\Productos\Productos.aspx" />
     <Content Include="vistas\Roles\estilo4.css" />
     <Content Include="vistas\Roles\pic_alta.png" />
     <Content Include="vistas\Roles\pic_back.png" />
-    <Content Include="vistas\Roles\pic_baja.png" />
     <Content Include="vistas\Roles\pic_cons.png" />
     <Content Include="vistas\Roles\pic_modif.png" />
+    <Content Include="vistas\Roles\pic_baja.png" />
     <Content Include="vistas\Roles\Roles.aspx" />
     <Content Include="vistas\Usuario\estilo3.css" />
     <Content Include="vistas\Usuario\pic_alta.png" />
     <Content Include="vistas\Usuario\pic_back.png" />
-    <Content Include="vistas\Usuario\pic_baja.png" />
     <Content Include="vistas\Usuario\pic_cons.png" />
+    <Content Include="vistas\Usuario\pic_baja.png" />
     <Content Include="vistas\Usuario\pic_modif.png" />
     <Content Include="vistas\Usuario\Usuario.aspx" />
     <Content Include="Web.config" />
@@ -316,6 +318,13 @@
     <Compile Include="vistas\CatalogoProductos\CatalogoProductos.aspx.designer.cs">
       <DependentUpon>CatalogoProductos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vistas\GestionInventario\GestionInventario.aspx.cs">
+      <DependentUpon>GestionInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\GestionInventario\GestionInventario.aspx.designer.cs">
+      <DependentUpon>GestionInventario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vistas\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -354,7 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="vistas\GestionInventario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

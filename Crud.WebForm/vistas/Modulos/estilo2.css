@@ -6,20 +6,7 @@
 }
 
 body {
-    background: #f4f4f4;
-}
-
-.banner {
-    width: 100%;
-    height: 90px;
-    background: linear-gradient(90deg, #1e3c72, #2a5298);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    background: orange;
 }
 
 .contenido {
@@ -28,7 +15,7 @@ body {
 }
 
 .card {
-    background-color: #00FFFF;
+    background-color: white;
     padding: 30px;
     border-radius: 12px;
     max-width: 600px;
@@ -41,7 +28,7 @@ body {
     padding: 12px;
     border: none;
     border-radius: 4px;
-    background: #1A89FF;
+    background: brown;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -49,7 +36,7 @@ body {
 }
 
     .boton:hover {
-        background: #030099;
+        background: black;
     }
 
 .botonback {

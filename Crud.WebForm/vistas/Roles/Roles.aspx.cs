@@ -24,11 +24,19 @@ namespace Crud.WebForm
                 }
         }
 
+        private void LimpiarMensajes()
+        {
+            lblFallo.Text = "";
+            lblExito.Text = "";
+        }
+
         protected void btnAlta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             if (!int.TryParse(txtId.Text, out int idRol))
             {
-                lblMensaje.Text = "Debe ingresar un ID de rol válido";
+                lblFallo.Text = "Debe ingresar un ID de rol válido";
                 return;
             }
 
@@ -41,7 +49,7 @@ namespace Crud.WebForm
                 UsuarioDL usuarioDL = new UsuarioDL();
                 if (!usuarioDL.ExisteUsuario(idUsuario))
                 {
-                    lblMensaje.Text = "No se puede asignar rol: el usuario no está registrado.";
+                    lblFallo.Text = "No se puede asignar rol: el usuario no está registrado.";
                     return;
                 }
 
@@ -54,19 +62,21 @@ namespace Crud.WebForm
                 rolesDL.altaRol(idRol, idUsuario, nombreRol);
 
                 CargarRoles();
-                lblMensaje.Text = "Rol registrado correctamente.";
+                lblExito.Text = "Rol registrado correctamente.";
             }
             catch (Exception)
             {
-                lblMensaje.Text = "No se pueden repetir roles";
+                lblFallo.Text = "No se pueden repetir roles";
             }
         }
       
         protected void btnBaja_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             if (!int.TryParse(txtId.Text, out int idRol))
             {
-                lblMensaje.Text = "Debe ingresar un ID válido";
+                lblFallo.Text = "Debe ingresar un ID válido";
                 return;
             }
 
@@ -84,24 +94,26 @@ namespace Crud.WebForm
                     rolesDL.bajaRol(idRol);
 
                     CargarRoles();
-                    lblMensaje.Text = "Rol eliminado exitosamente.";
+                    lblExito.Text = "Rol eliminado exitosamente.";
                 }
                 catch (Exception ex)
                 {
-                    lblMensaje.Text = "Error al eliminar el rol: " + ex.Message;
+                    lblFallo.Text = "Error al eliminar el rol: " + ex.Message;
                 }
             }
             else
             {
-                lblMensaje.Text = "Operación cancelada por el usuario.";
+                lblExito.Text = "Operación cancelada por el usuario.";
             }
         }
 
         protected void btnConsulta_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             if (!int.TryParse(txtId.Text, out int idRol))
             {
-                lblMensaje.Text = "Debe ingresar un ID válido";
+                lblFallo.Text = "Debe ingresar un ID válido";
                 return;
             }
 
@@ -112,25 +124,27 @@ namespace Crud.WebForm
                 if (rol != null)
                 {
                     ddlRol.SelectedValue = rol.NombreRol;
-                    lblMensaje.Text = $"Rol encontrado. Usuario asignado: {rol.NombreRol}" +
+                    lblExito.Text = $"Rol encontrado. Usuario asignado: {rol.NombreRol}" +
                                       $", ID: {rol.IdUsuario}";
                 }
                 else
                 {
-                    lblMensaje.Text = "No se encontró un rol con el ID proporcionado.";
+                    lblFallo.Text = "No se encontró un rol con el ID proporcionado.";
                 }
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = ex.Message;
+                lblFallo.Text = ex.Message;
             }
         }
 
-        protected void btnModificar_Click(object sender, EventArgs e)
+        protected void btnModificacion_Click(object sender, EventArgs e)
         {
+            LimpiarMensajes();
+
             if (!int.TryParse(txtId.Text, out int idRol))
             {
-                lblMensaje.Text = "Debe ingresar un ID de rol válido";
+                lblFallo.Text = "Debe ingresar un ID de rol válido";
                 return;
             }
 
@@ -148,11 +162,11 @@ namespace Crud.WebForm
                 rolesDL.modificacionRol(idRol, idUsuario, nombreRol);
 
                 CargarRoles();
-                lblMensaje.Text = "Rol modificado correctamente.";
+                lblExito.Text = "Rol modificado correctamente.";
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Error: " + ex.Message;
+                lblFallo.Text = "Error: " + ex.Message;
             }
         }
 

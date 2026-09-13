@@ -50,16 +50,16 @@
                 </div>
                 <br /><br />
 
-                <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje" />
+                <asp:Label ID="lblFallo" runat="server" ForeColor="Red"/>
+                <asp:Label ID="lblExito" runat="server" ForeColor="Green" />
 
                 <br /><br />
 
-                <asp:ImageButton ID="btnAlta" runat="server" ImageUrl="~/vistas/Usuario/pic_alta.png" AlternateText="Alta" Height="70px" Width="70px" OnClick="btnAlta_Click" />                
-                <asp:ImageButton ID="btnBaja" runat="server" ImageUrl="~/vistas/Usuario/pic_modif.png" AlternateText="Baja" Height="70px" Width="70px" OnClick="btnBaja_Click" />                
-                <asp:ImageButton ID="btnConsulta" runat="server" ImageUrl="~/vistas/Usuario/pic_baja.png" AlternateText="Consulta" Height= "70px" Width="70px" OnClick="btnConsulta_Click" />                
-                <asp:ImageButton ID="btnModificacion" runat="server" ImageUrl="~/vistas/Usuario/pic_cons.png" AlternateText="Modificacion" Height="70px" Width="70px" OnClick="btnModificar_Click" />                
-                <asp:ImageButton ID="btnRegresar" runat="server" ImageUrl="~/vistas/Usuario/pic_back.png" AlternateText="Regresar" Height="70px" Width="70px" OnClick="btnRegresar_Click" />                
-
+                <asp:ImageButton ID="btnAlta" runat="server" ImageUrl="~/vistas/Usuario/pic_alta.png" AlternateText="Alta" Height="70px" Width= "70px" OnClick="btnAlta_Click"/> 
+                <asp:ImageButton ID="btnBaja" runat="server" ImageUrl="~/vistas/Usuario/pic_baja.png" AlternateText="Baja" Height="70px" Width="70px" OnClick="btnBaja_Click" />
+                <asp:ImageButton ID="btnConsulta" runat="server" ImageUrl="~/vistas/Usuario/pic_cons.png" AlternateText="Consulta" Height="70px" Width="70px" OnClick="btnConsulta_Click" />
+                <asp:ImageButton ID="btnModificacion" runat="server" ImageUrl="~/vistas/Usuario/pic_modif.png" AlternateText="Modificacion" Height="70px" Width="70px" OnClick="btnModificacion_Click" />
+                <asp:ImageButton ID="btnRegresar" runat="server" ImageUrl="~/vistas/Usuario/pic_back.png" AlternateText="Regresar" Height= "70px" Width="70px" OnClick="btnRegresar_Click" />               
                 <br /><br />
 
                  <div class="contenedor-tabla">
