@@ -88,11 +88,27 @@ namespace Crud.WebForm
 
             string id = txtId.Text;
 
-            if (id == null || id == "")
+            if (string.IsNullOrEmpty(id))
             {
                 lblFallo.Text = "Debe ingresar un ID para eliminar un usuario";
                 return;
             }
+
+            if (Session["UsuarioID"] == null)
+            {
+                lblFallo.Text = "No puedes borrar IDs que esten en sesion.";
+                return;
+            }
+
+            string idLogueado = Session["UsuarioID"].ToString();
+
+            if (id == idLogueado)
+            {
+                txtId.Text = "";
+                lblFallo.Text = "Acción denegada: No puede eliminar su propio usuario mientras está logueado.";
+                return;
+            }
+
             try
             {
                 UsuarioDL usuarioDL = new UsuarioDL();
@@ -101,7 +117,7 @@ namespace Crud.WebForm
                 "Confirmación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
-                
+
                 if (resultado == DialogResult.Yes)
                 {
                     usuarioDL.bajaUsuario(int.Parse(id));
@@ -115,13 +131,11 @@ namespace Crud.WebForm
                     txtId.Text = "";
                     lblFallo.Text = "Operación cancelada por el usuario";
                 }
-
             }
             catch (Exception)
             {
                 lblFallo.Text = "No se encuentra el ID registrado";
             }
-
         }
         protected void btnConsulta_Click(object sender, EventArgs e)
         {
